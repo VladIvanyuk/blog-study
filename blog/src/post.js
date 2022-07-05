@@ -1,14 +1,15 @@
-const paramsString = document.location.search;
-const postData = new URLSearchParams(paramsString);
-const postPage = postData.get('page');
+const urlParamsString = document.location.search;
+const postsUrlData = new URLSearchParams(urlParamsString);
+const postPage = postsUrlData.get('page');
 // Получаем ID статьи
-const postId = postData.get('id');
+const postId = postsUrlData.get('id');
+console.log(postsUrlData);
 
 async function makePost(id) {
   // получаем с сервера статью по ID в виде объекта
   const response = await fetch(`https://gorest.co.in/public-api/posts?page=${postPage}`);
   const data = await response.json();
-  let postId = await postData.get('id');
+  let postId = await postsUrlData.get('id');
   let postObj = await data['data'][postId];
 
   makeContent(postObj);

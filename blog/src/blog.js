@@ -29,16 +29,20 @@ function createPageChangeForm(container) {
 
   const changeForm = document.createElement('form');
   const pageNumInput = document.createElement('input');
-  const changeFormBtn = document.createElement('button');
+  const changePageBtn = document.createElement('button');
+
+  changeForm.classList.add('form');
+  changePageBtn.classList.add('btn');
+  changePageBtn.innerHTML = 'Сменить страницу';
 
   container.append(changeForm);
   changeForm.append(pageNumInput);
-  changeForm.append(changeFormBtn);
+  changeForm.append(changePageBtn);
 }
 
 const blogContainer = document.querySelector('.container');
 const blogUl = document.createElement('ul');
 blogContainer.append(blogUl);
 
-loadBlogPostsList(32)
+loadBlogPostsList(2)
 createPageChangeForm(blogContainer);
