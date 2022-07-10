@@ -6,7 +6,7 @@ const blogContainer = document.querySelector('.container');
 const blogUl = document.createElement('ul')
 
 async function loadBlogPostsList(page = 1) {
-
+  // проверка на первую страницу
   if(urlParamsString === '?page=1') {
     window.location.assign('index.html')
   }
@@ -27,12 +27,15 @@ function makePostsList(object, page) {
 
     const blogItem = document.createElement('li');
     const blogItemLink = document.createElement('a');
+    blogItem.classList.add('post');
+    blogItemLink.classList.add('post__link');
 
     blogContainer.append(blogUl)
-    blogItemLink.innerHTML = elem.title;
-    blogItemLink.setAttribute('href', `post.html?page=${page}&id=${postCount}`);
     blogItem.append(blogItemLink);
     blogUl.append(blogItem);
+    blogItemLink.innerHTML = elem.title;
+    blogItemLink.setAttribute('href', `post.html?page=${page === null ? 1 : page}&id=${postCount}`);
+
     postCount++;
   }
 
@@ -41,12 +44,17 @@ function makePostsList(object, page) {
   changePageLink.innerHTML = 'Сменить страницу';
 
   changePageInput.addEventListener('input', () => {
+    // при вводе, добавляем то что вводим в ссылку
     changePageLink.setAttribute('href', `index.html?page=${changePageInput.value}`)
+  })
+
+  changePageInput.addEventListener('keyup', (e) => {
+    if (e.code === 'Enter') {
+      window.location.assign(`index.html?page=${changePageInput.value}`)
+    }
   })
 
   blogContainer.append(changePageInput, changePageLink);
 }
-
-
 
 loadBlogPostsList(postPage)

@@ -12,10 +12,17 @@ async function makePost(id) {
   let postId = await postsUrlData.get('id');
   let postObj = await data['data'][postId];
 
-  makeContent(postObj);
+  // получаем комментарии к этой статье
+  const comments = await fetch(`https://gorest.co.in/public-api/comments?post_id=${postObj.id}`);
+  const commentsData = await comments.json();
+  const commentsListArray = commentsData.data;
+  console.log(commentsListArray);
+
+  addContentBlock(postObj);
+  addCommentsBlock(commentsListArray)
 }
 
-function makeContent(obj) {
+function addContentBlock(obj) {
   // на основе полученного объекта со статьёй рисуем контент
   const container = document.querySelector('.container');
   const postTitle = document.createElement('h1');
@@ -26,6 +33,12 @@ function makeContent(obj) {
 
   container.append(postTitle);
   container.append(postDescr);
+}
+
+function addCommentsBlock(commentsArray) {
+  for (let element of commentsArray) {
+    console.log(element)
+  }
 }
 
 makePost(postId);
