@@ -20,8 +20,10 @@ ul {
 }
 
 .container {
+  min-height: 800px;
+  position: relative;
   max-width: 100%;
-  padding: 30px;
+  padding: 100px 40px;
   background-image: url(../img/bg-main.jpg);
   background-size: cover;
 }
@@ -59,4 +61,53 @@ ul {
   box-shadow: 7px 9px 22px 0px rgba(0, 0, 0, 1);
   text-decoration: inherit;
   color: black;
+}
+
+.change-block {
+  max-width: 500px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background: rgba(210, 121, 166, 0.28);
+  border-radius: 10px;
+}
+
+.change-block:hover {
+  background: rgba(210, 121, 166, 0.85);
+}
+
+.change-block input {
+  margin-bottom: 0px;
+  padding: 4px;
+  margin-right: 10px;
+  max-width: 50px;
+  border-radius: 10px;
+  border: none;
+  -moz-appearance:textfield;
+
+}
+
+.change-block a {
+  display: inline-block;
+  margin-right: auto;
+  font-family: 'Dosis', sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.change-block p {
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 20px;
+  font-family: 'Dosis', sans-serif;
+}
+
+.change-block input::-webkit-outer-spin-button,
+.change-block input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
