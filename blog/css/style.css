@@ -35,14 +35,14 @@ ul {
   border-radius: 10px;
   background-color: white;
   background-image: url(../img/bg.jpg);
-  background-size: cover;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   transition: all .5s ease;
 }
 
 .post:hover {
   background-image: url(../img/bg-hover.jpg);
-  background-size: cover;
+  background-size: 100% 100%;
   transform: scale(1.05);
 }
 

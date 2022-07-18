@@ -3,7 +3,6 @@ const postsUrlData = new URLSearchParams(urlParamsString);
 const postPage = postsUrlData.get('page');
 // Получаем ID статьи
 const postId = postsUrlData.get('id');
-console.log(postsUrlData);
 
 async function makePost(id) {
   // получаем с сервера статью по ID в виде объекта
